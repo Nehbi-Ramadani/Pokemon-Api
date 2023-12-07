@@ -1,33 +1,30 @@
-import { useEffect, useState } from "react";
 import "./Pokedex.scss";
 import SearchBar from "../../Components/SearchBar/SearchBar";
-
+import { FetchContext } from "../../Context/Context";
+import { useContext } from "react";
 const Pokedex = () => {
-  const [pokeData, setPokeData] = useState([]);
-  const [pokeDetail, setPokeDetail] = useState([]);
-
-  // initial fetch of data and save them in pokeData state
-  useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon/")
-      .then((res) => res.json())
-      .then((fetchedData) => {
-        setPokeData(fetchedData.results);
-
-        // pokeData.results.map((pokemon)=> {
-        //   fetch(pokemon.)
-        // })
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
-  console.log(pokeData);
-  // console.log(pokeData[0].name);
+  const pokemonInfo = useContext(FetchContext);
+  console.log(pokemonInfo);
 
   return (
     <>
       <div className="pokedex__wrapper smart">
         <header className="pokedex-header__wrapper">
           <SearchBar />
+          <section>
+            {pokemonInfo.fetchedData?.map((singlePokemonData) => {
+              return (
+                <article key={singlePokemonData.id}>
+                  <h2>{singlePokemonData.name}</h2>
+                  <img src={singlePokemonData.sprites.back_default} alt="" />
+                  <p>
+                    {"Base Experience: " + singlePokemonData.base_experience}
+                  </p>
+                  <p>{"Weight: " + singlePokemonData.weight}</p>
+                </article>
+              );
+            })}
+          </section>
         </header>
         <main className="pokedex-main__wrapper"></main>
       </div>
