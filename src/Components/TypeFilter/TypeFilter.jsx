@@ -1,10 +1,11 @@
-import "./TypeFilter.scss"
-
+import "./TypeFilter.scss";
 
 const TypeFilter = () => {
-    return ( 
-        <div></div>
-    );
-}
+  return (
+    <>
+      <section className="typefilter__wrapper"></section>
+    </>
+  );
+};
 
 export default TypeFilter;
