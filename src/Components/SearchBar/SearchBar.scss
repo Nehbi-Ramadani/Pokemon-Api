@@ -1,3 +1,24 @@
-.logo__wrapper {
-  text-align: center;
+header {
+
+  .darkmode {
+    background-color: black;
+  }
+  .logo__wrapper {
+    text-align: center;
+  }
+  .searchbar__wrapper {
+    text-align: center;
+    .backIcon {
+      width: 50px;
+    }
+    form {
+      input {
+        width: 50%;
+      }
+    }
+    .darkmodeButton {
+      width: 50px;
+    }
+  }
 }
+
