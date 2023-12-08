@@ -30,18 +30,6 @@
   justify-content: center;
   height: 100vh;
   background-color: black;
-  overflow: hidden; /* Hide scrollbars */
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  & {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
 }
 
 // global class for smartphone size
@@ -69,4 +57,3 @@
 .hide {
   display: none;
 }
-//
