@@ -16,16 +16,16 @@ const TypeFilter = () => {
     // pokemonInfo.setfetchedData(pokemonInfo.fetchedData);
     const newArr = [];
 
-    pokemonInfo.fetchedData?.map((singlePokemonData) => {
+    pokemonInfo.pokemonAPPinfo?.map((singlePokemonData) => {
       singlePokemonData.types.map((dataDetails) => {
         if (dataDetails.type.name == search) {
           newArr.push(singlePokemonData);
         }
       });
     });
-    console.log(newArr);
-    pokemonInfo.setfetchedData(newArr);
-    console.log(pokemonInfo.fetchedData);
+
+    pokemonInfo.setPokemonInfo(newArr);
+    console.log(pokemonInfo.pokemonAPPinfo);
   };
 
   return (
