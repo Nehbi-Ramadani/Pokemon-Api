@@ -1,16 +1,17 @@
 import "./Pokedex.scss";
 import SearchBar from "../../Components/SearchBar/SearchBar";
-import { FetchContext } from "../../Context/Context";
+import { FetchContext, DarkmodeContext } from "../../Context/Context";
 import { useContext } from "react";
 const Pokedex = () => {
   const pokemonInfo = useContext(FetchContext);
+  const darkmodeToggle = useContext(DarkmodeContext);
   console.log(pokemonInfo);
 
   return (
     <>
-      <div className="pokedex__wrapper smart">
-        <header className="pokedex-header__wrapper">
+      <div className={`pokedex__wrapper smart ${darkmodeToggle.darkmode ? "darkmode" : ""}`}>
           <SearchBar />
+        <main className="pokedex-main__wrapper">
           <section>
             {pokemonInfo.fetchedData?.map((singlePokemonData) => {
               return (
@@ -25,8 +26,7 @@ const Pokedex = () => {
               );
             })}
           </section>
-        </header>
-        <main className="pokedex-main__wrapper"></main>
+        </main>
       </div>
     </>
   );
