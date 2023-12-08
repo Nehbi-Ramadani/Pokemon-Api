@@ -1,4 +1,19 @@
 .typefilter__wrapper {
+  position: relative;
+  // top: -100;
+
+  background-color: #ccdadd;
+  width: 375px;
+  height: 700px;
+  padding: 1em;
+
+  // position: fixed; /* Stay in place */
+  // z-index: 1; /* Stay on top */
+  // top: 0; /* Stay at the top */
+  // left: 0;
+  // overflow-x: hidden; /* Disable horizontal scroll */
+  // padding-top: 60px; /* Place content 60px from the top */
+  // transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   .typefilter_nav {
     display: flex;
     justify-content: space-between;
@@ -12,6 +27,7 @@
         margin-right: 8px;
         width: 20px;
         height: 20px;
+        cursor: pointer;
       }
     }
   }
@@ -48,6 +64,17 @@
         border-radius: 5px;
         border: 1px solid #2c72b8;
         background-color: #ffcb05;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #2c72b8;
+          color: #ffcb05;
+          border: 1px solid #ffcb05;
+        }
+
+        &:active {
+          box-shadow: 2px 2px 5px #ffcb05;
+        }
       }
     }
   }
@@ -65,6 +92,13 @@
       border: 5px solid #2c72b8;
       border-radius: 10px;
       padding: 0.5em 1em;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #2c72b8;
+        color: #ffcb05;
+        border: 5px solid #ffcb05;
+      }
     }
   }
 }
