@@ -36,7 +36,7 @@ const DataFetch = () => {
                 return pokemon1.id - pokemon2.id;
               });
 
-              //Unsere Counter vergleichen wir mit der Totalen Länge des Arrays aus unserem ersten Fetch
+              //Unseren Counter vergleichen wir mit der Totalen Länge des Arrays aus unserem ersten Fetch
               //wenn wir wirklich alle 151 Pokemon haben, DANN wird das vollständige und sortierte Array in unser FetchContext über die SetterFunktion abgespeichert
               if (completedFetches === totalPokemon) {
                 pokeDetails.setPokemonInfo(pokemonArray);

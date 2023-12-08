@@ -1,21 +1,12 @@
 import "./PokemonCard.scss";
 
-
-
-
-
-
-
-
-
 const PokemonCard = () => {
   return (
     <>
       <div className="pokemoncard__wrapper smart">
-        <header className="pokemoncard-header__wrapper">
-        </header>
+        <header className="pokemoncard-header__wrapper"></header>
         <main className="pokemoncard-main__wrapper">
-        <img src="" alt="Pokemon Bild" />
+          <img src="" alt="Pokemon Bild" />
           <h1>#006 Blubasaur</h1>
           <div className="type_box">
             <p>POISON</p>
