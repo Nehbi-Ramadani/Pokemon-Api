@@ -1,14 +1,15 @@
 import "./TypeFilter.scss";
 import PokeLogo from "./../../assets/img/Pokemon-Logo.png";
 import XBtn from "./../../assets/img/x.png";
-import { FetchContext } from "../../Context/Context";
+import { FetchContext, ShowMenueContext } from "../../Context/Context";
 import { useContext, useState } from "react";
 
 const TypeFilter = () => {
   const [search, setSearch] = useState("grass");
   const pokemonInfo = useContext(FetchContext);
 
-  const [showMenue, setShowMenue] = useState(false);
+  // const [showMenue, setShowMenue] = useState(false);
+  const showMenue = useContext(ShowMenueContext);
 
   // function filter type
   const order = () => {
@@ -27,15 +28,10 @@ const TypeFilter = () => {
     console.log(pokemonInfo.fetchedData);
   };
 
-  // function show menue
-  const show = () => {};
-
   return (
     <>
       <section
-        className={
-          showMenue ? "hide typefilter__wrapper" : "typefilter__wrapper"
-        }
+        className={`typefilter__wrapper ${showMenue.showMenue ? "" : "hide"}`}
       >
         <header>
           <nav className="typefilter_nav">
@@ -43,7 +39,11 @@ const TypeFilter = () => {
             <img
               src={XBtn}
               alt="X-Button"
-              onClick={() => setShowMenue(!showMenue)}
+              onClick={() => {
+                showMenue.setShowMenue(false);
+                console.log(showMenue.showMenue);
+                console.log(showMenue);
+              }}
             />
           </nav>
         </header>
@@ -214,7 +214,7 @@ const TypeFilter = () => {
               className="btn_search"
               onClick={() => {
                 order();
-                setShowMenue(!showMenue);
+                showMenue.setShowMenue(false);
               }}
             >
               Search
