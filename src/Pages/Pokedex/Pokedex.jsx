@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 const Pokedex = () => {
   // const pokemonPOKEDEXinfo = useContext(FetchContext);
   // const pokemonDetail = useContext(PokeInfoContext);
-  const pokemonInfo = useContext(FetchContext);
 
   // console.log("POKEMONINFO", pokemonPOKEDEXinfo);
   // console.log("POKEMONINFO", pokemonPOKEDEXinfo.fetchedData);

@@ -13,7 +13,6 @@ import DataFetch from "./data/DataFetch";
 //Wir importieren hier unser Globalen-Context (FetchContext)
 
 function App() {
-  const [fetchedData, setfetchedData] = useState([]);
   const [darkmode, setDarkmode] = useState(false);
   const [showMenue, setShowMenue] = useState(false);
 
@@ -23,13 +22,17 @@ function App() {
   return (
     <>
       {/* Dem FetchContext.Provider übergeben wir das UseState als Objekt! */}
-      <FetchContext.Provider value={{ pokemonAPPinfo, setPokemonInfo }}>
-        <DataFetch />
-        <Routes>
-          <Route path="/" element={<Pokedex />} />
-          <Route path="/pokemoncard/:id" element={<PokemonCard />} />
-        </Routes>
-      </FetchContext.Provider>
+      <ShowMenueContext.Provider value={{ showMenue, setShowMenue }}>
+        <DarkmodeContext.Provider value={{ darkmode, setDarkmode }}>
+          <FetchContext.Provider value={{ pokemonAPPinfo, setPokemonInfo }}>
+            <DataFetch />
+            <Routes>
+              <Route path="/" element={<Pokedex />} />
+              <Route path="/PokemonCard/:pokemonId" element={<PokemonCard />} />
+            </Routes>
+          </FetchContext.Provider>
+        </DarkmodeContext.Provider>
+      </ShowMenueContext.Provider>
     </>
   );
 }
