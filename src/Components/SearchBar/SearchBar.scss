@@ -1,5 +1,9 @@
 header {
-
+  padding-top: 8px;
+  position: fixed;
+  background-color: #ccdadd;
+  width: 360px;
+  border-radius: 10px;
   .darkmode {
     background-color: black;
   }
@@ -8,12 +12,27 @@ header {
   }
   .searchbar__wrapper {
     text-align: center;
-    .backIcon {
-      width: 50px;
+    display: grid;
+    grid-template-columns: 60px 1fr 60px;
+    align-items: center;
+    margin-block: 8px;
+    .containerMenuBackbutton {
+      .menuIcon {
+        width: 50px;
+      }
+      .backIcon {
+        width: 50px;
+      }
+      .hide {
+        display: none;
+      }
     }
     form {
       input {
-        width: 50%;
+        width: 80%;
+        opacity: 0.5;
+        padding: 4px;
+        border-radius: 20px;
       }
     }
     .darkmodeButton {
