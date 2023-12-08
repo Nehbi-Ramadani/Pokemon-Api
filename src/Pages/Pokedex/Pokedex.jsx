@@ -1,19 +1,16 @@
 import "./Pokedex.scss";
 import SearchBar from "../../Components/SearchBar/SearchBar";
-import { FetchContext, PokeInfoContext } from "../../Context/Context";
+import { FetchContext } from "../../Context/Context";
 import { useContext } from "react";
 import "./Pokedex.scss";
 import { Link } from "react-router-dom";
 
+//Auch hier wird unser FetchContext importiert um die Daten zu rendern!
 const Pokedex = () => {
-  // const pokemonPOKEDEXinfo = useContext(FetchContext);
-  // const pokemonDetail = useContext(PokeInfoContext);
-  const pokemonInfo = useContext(FetchContext);
-
-  // console.log("POKEMONINFO", pokemonPOKEDEXinfo);
-  // console.log("POKEMONINFO", pokemonPOKEDEXinfo.fetchedData);
-  // console.log("Pokemon-Detail", pokemonDetail);
-
+  //Unser FetchContext wird hier über useContext in die Komponente eingebunden und in pokemonDetails abgespeichert!
+  //in pokemonDetails sind die gefetchten Daten aus DataFetch enthalten!
+  const pokemonDetails = useContext(FetchContext);
+  console.log(pokemonDetails);
   return (
     <>
       <div className="pokedex__wrapper smart">
@@ -22,13 +19,13 @@ const Pokedex = () => {
         </header>
         <main className="pokedex-main__wrapper">
           <section className="pokedex-main__layout">
-            {pokemonInfo.fetchedData?.map((singlePokemonData) => {
+            {pokemonDetails.pokemonAPPinfo?.map((singleData) => {
               return (
-                <article key={singlePokemonData.id}>
+                <article key={singleData.id}>
                   <div className="pokedex-main__image-container-design">
                     <img
                       src={
-                        singlePokemonData.sprites.other["official-artwork"]
+                        singleData.sprites.other["official-artwork"]
                           .front_default
                       }
                       alt=""
@@ -38,14 +35,14 @@ const Pokedex = () => {
                     <h4>
                       <div>
                         {"#"}
-                        {singlePokemonData.id}
+                        {singleData.id}
                       </div>
 
-                      {singlePokemonData.name}
+                      {singleData.name}
                     </h4>
                     <Link
                       className="pokeball"
-                      to={`/PokemonCard/${singlePokemonData.id}`}
+                      to={`/PokemonCard/${singleData.id}`}
                     >
                       <img
                         src="src\assets\img\Poke_Ball_icon.svg.png"
