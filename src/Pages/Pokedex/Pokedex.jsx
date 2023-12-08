@@ -2,21 +2,36 @@ import "./Pokedex.scss";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import { FetchContext } from "../../Context/Context";
 import { useContext } from "react";
+
 import "./Pokedex.scss";
 import { Link } from "react-router-dom";
 
 //Auch hier wird unser FetchContext importiert um die Daten zu rendern!
 const Pokedex = () => {
+  // const pokemonPOKEDEXinfo = useContext(FetchContext);
+  // const pokemonDetail = useContext(PokeInfoContext);
+  const pokemonInfo = useContext(FetchContext);
+
+  // console.log("POKEMONINFO", pokemonPOKEDEXinfo);
+  // console.log("POKEMONINFO", pokemonPOKEDEXinfo.fetchedData);
+  // console.log("Pokemon-Detail", pokemonDetail);
+  const darkmodeToggle = useContext(DarkmodeContext);
+  console.log(pokemonInfo);
+
   //Unser FetchContext wird hier über useContext in die Komponente eingebunden und in pokemonDetails abgespeichert!
   //in pokemonDetails sind die gefetchten Daten aus DataFetch enthalten!
   const pokemonDetails = useContext(FetchContext);
   console.log(pokemonDetails);
   return (
     <>
-      <div className="pokedex__wrapper smart">
-        <header className="pokedex-header__wrapper">
-          <SearchBar />
-        </header>
+      <TypeFilter />
+      <div
+        className={`pokedex__wrapper smart ${
+          darkmodeToggle.darkmode ? "darkmode" : ""
+        }`}
+      >
+        <SearchBar />
+
         <main className="pokedex-main__wrapper">
           <section className="pokedex-main__layout">
             {pokemonDetails.pokemonAPPinfo?.map((singleData) => {
@@ -44,10 +59,7 @@ const Pokedex = () => {
                       className="pokeball"
                       to={`/PokemonCard/${singleData.id}`}
                     >
-                      <img
-                        src="src\assets\img\Poke_Ball_icon.svg.png"
-                        alt="pokeball"
-                      />
+                      <img src={pokeball} alt="pokeball" />
                     </Link>
                   </div>
                 </article>

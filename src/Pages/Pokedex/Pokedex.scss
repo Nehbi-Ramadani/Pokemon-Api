@@ -1,9 +1,11 @@
 .pokedex-main__wrapper {
+  padding-top: 160px;
   text-align: center;
   .pokedex-main__layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    padding-inline: 2%;
     article {
       border: 1px solid white;
       box-shadow: 0 0 10px white;
