@@ -1,8 +1,8 @@
-header {
+.header_searchbar {
   padding-top: 8px;
   position: fixed;
   background-color: #ccdadd;
-  width: 360px;
+  width: 375px;
   border-radius: 10px;
   .darkmode {
     background-color: black;
@@ -18,13 +18,16 @@ header {
     margin-block: 8px;
     .containerMenuBackbutton {
       .menuIcon {
-        width: 50px;
+        width: 30px;
+        cursor: pointer;
       }
       .backIcon {
         width: 50px;
+        cursor: pointer;
       }
       .hide {
         display: none;
+        cursor: pointer;
       }
     }
     form {
@@ -40,4 +43,3 @@ header {
     }
   }
 }
-
