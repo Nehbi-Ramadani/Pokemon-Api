@@ -28,7 +28,7 @@ const SearchBar = () => {
 
   // hier wird die Eingabe kontrolliert und der initiale fetch in echtzeit gefiltert
   useEffect(() => {
-    const filteredArray = searchData?.fetchedData.filter((elem) => {
+    const filteredArray = searchData?.pokemonAPPinfo.filter((elem) => {
       if (elem.name.includes(searchInput.toLowerCase())) {
         Arr.push(elem.name);
         return Arr;
@@ -37,7 +37,7 @@ const SearchBar = () => {
         console.log("suchfeld ist leer");
       }
     });
-    searchData.setfetchedData(filteredArray);
+    searchData.setPokemonInfo(filteredArray);
   }, [searchInput]);
 
   //Abfrage, ob aktuelle url / ist oder nicht. Bei nein, wird der zurück Button angezeigt.
