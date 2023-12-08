@@ -1,27 +1,65 @@
 import "./SearchBar.scss";
 import PokemonLogo from "./../../assets/img/Pokemon-Logo.png";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DarkmodeButton from "./../../assets/img/lightIcon.svg"
+import BackButton from "./../../assets/img/backIcon.svg"
+import { FetchContext, DarkmodeContext } from "../../Context/Context";
+import { Link, useLocation } from "react-router-dom";
+import MenuButton from "./../../assets/img/menuIcon.svg"
 
 const SearchBar = () => {
 
-  const [searchInput, setSearchInput] = useState("");
-  const [darkmode, setDarkmode] = useState(false)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+};
 
-console.log(searchInput);
+  const [searchInput, setSearchInput] = useState("");
+  const [displayButton, setDisplayButton] = useState(false);
+  // const [darkmode, setDarkmode] = useState(false);
+  let Arr = []; // Array zum zwischenspeichern meiner Suchanfrage Ergebnisse
+
+ const searchData = useContext(FetchContext)
+ const darkmodeToggle = useContext(DarkmodeContext)
+ const location = useLocation() //um zu checken, wann der zurückButton angezeigt werden soll, wird die url kontrolliert.
+
+// hier wird die Eingabe kontrolliert und der initiale fetch in echtzeit gefiltert
+useEffect(() => {
+  const filteredArray = searchData?.fetchedData.filter((elem) => {
+    if (elem.name.includes(searchInput.toLowerCase())){
+      Arr.push(elem.name)
+      return Arr
+    } else if (searchInput == "") { // if Abfrage um bei einem leeren Suchfeld den initialen fetch anzuzeigen. quasi ein reset der Suche
+      console.log("suchfeld ist leer")
+    }
+  })
+  searchData.setfetchedData(filteredArray)
+}, [searchInput])
+
+//Abfrage, ob aktuelle url / ist oder nicht. Bei nein, wird der zurück Button angezeigt.
+useEffect(() => {
+  if (location.pathname === "/") {
+    return setDisplayButton(false)
+  } else {
+    return setDisplayButton(true)
+  }
+}, [])
 
   return (
-    <header className={darkmode ? "darkmode" : ""}>
-      <div className="logo__wrapper" onClick={() => setDarkmode(!darkmode)}>
-        <img src={PokemonLogo} alt="" />
+    <header className={darkmodeToggle.darkmode ? "darkmode" : ""}>
+      <div className="logo__wrapper" >
+        <img src={PokemonLogo} alt=""/>
       </div>
       <nav className="searchbar__wrapper">
-        <div className="backIcon">
+        <div className="containerMenuBackbutton">
+          <img src={MenuButton} alt="menu button" className={`menuIcon ${displayButton ? "hide" : ""}`} />
+        <Link to="/" className={`backIcon ${displayButton ? "" : "hide"}`}>
+          <img src={BackButton} alt="button to navigate a page back" />
+        </Link>
         </div>
-        <form>
-          <input type="text" onChange={(event) => setSearchInput(event.target.value)}/>
+        <form onSubmit={handleSubmit}>
+          <input placeholder="Search for your Pokemon..." type="text" onChange={(event) => setSearchInput(event.target.value)}/>
         </form>
-        <div className="darkmodeButton">
+        <div className="darkmodeButton" onClick={() => darkmodeToggle.setDarkmode(!darkmodeToggle.darkmode)}>
           <img src={DarkmodeButton} alt="button to switch darkmode on" />
         </div> 
       </nav>

@@ -1,36 +1,76 @@
 import "./Pokedex.scss";
 import SearchBar from "../../Components/SearchBar/SearchBar";
-import { FetchContext } from "../../Context/Context";
+
+
+import { FetchContext, DarkmodeContext, PokeInfoContext } from "../../Context/Context";
+
 import { useContext } from "react";
+
+import "./Pokedex.scss";
 import { Link } from "react-router-dom";
-import PokemonCard from "../PokemonCard/PokemonCard";
 
 const Pokedex = () => {
+  // const pokemonPOKEDEXinfo = useContext(FetchContext);
+  // const pokemonDetail = useContext(PokeInfoContext);
   const pokemonInfo = useContext(FetchContext);
+
+
+  // console.log("POKEMONINFO", pokemonPOKEDEXinfo);
+  // console.log("POKEMONINFO", pokemonPOKEDEXinfo.fetchedData);
+  // console.log("Pokemon-Detail", pokemonDetail);
+    const darkmodeToggle = useContext(DarkmodeContext);
   console.log(pokemonInfo);
+
+
+
 
   return (
     <>
-      <div className="pokedex__wrapper smart">
-        <header className="pokedex-header__wrapper">
+      <div className={`pokedex__wrapper smart ${darkmodeToggle.darkmode ? "darkmode" : ""}`}>
           <SearchBar />
-          <section>
+
+        </header>
+        <main className="pokedex-main__wrapper">
+          <section className="pokedex-main__layout">
+
+
             {pokemonInfo.fetchedData?.map((singlePokemonData) => {
               return (
                 <article key={singlePokemonData.id}>
-                  <h2>{singlePokemonData.name}</h2>
-                  <img src={singlePokemonData.sprites.back_default} alt="" />
-                  <p>
-                    {"Base Experience: " + singlePokemonData.base_experience}
-                  </p>
-                  <Link to={`/PokemonCard/${singlePokemonData.id}`}>Details</Link>
-                  <p>{"Weight: " + singlePokemonData.weight}</p>
+
+                  <div className="pokedex-main__image-container-design">
+                    <img
+                      src={
+                        singlePokemonData.sprites.other["official-artwork"]
+                          .front_default
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div className="pokedex-main__pokemonInfo-container-design">
+                    <h4>
+                      <div>
+                        {"#"}
+                        {singlePokemonData.id}
+                      </div>
+
+                      {singlePokemonData.name}
+                    </h4>
+                    <Link
+                      className="pokeball"
+                      to={`/PokemonCard/${singlePokemonData.id}`}
+                    >
+                      <img
+                        src="src\assets\img\Poke_Ball_icon.svg.png"
+                        alt="pokeball"
+                      />
+                    </Link>
+                  </div>
                 </article>
               );
             })}
           </section>
-        </header>
-        <main className="pokedex-main__wrapper"></main>
+        </main>
       </div>
     </>
   );
