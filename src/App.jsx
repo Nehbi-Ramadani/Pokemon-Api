@@ -14,10 +14,10 @@ function App() {
     <DarkmodeContext.Provider value={{ darkmode, setDarkmode }}>
       <FetchContext.Provider value={{ fetchedData, setfetchedData }}>
         <DataFetch />
-          <Routes>
-            <Route path="/" element={<Pokedex />} />
-            <Route path="/pokemoncard/:id" element={<PokemonCard />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Pokedex />} />
+          <Route path="/PokemonCard/:pokemonId" element={<PokemonCard/>} />
+        </Routes>
       </FetchContext.Provider>
     </DarkmodeContext.Provider>
     </>

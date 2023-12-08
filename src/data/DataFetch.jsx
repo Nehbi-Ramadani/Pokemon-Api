@@ -5,7 +5,7 @@ const DataFetch = () => {
   const pokeInfo = useContext(FetchContext);
 
   useEffect(() => {
-    const infoArray = [];
+    const infoArray =  [];
     for (let index = 1; index < 152; index++) {
       fetch(`https://pokeapi.co/api/v2/pokemon/${index}`)
         .then((res) => res.json())

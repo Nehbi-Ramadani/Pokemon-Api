@@ -5,6 +5,7 @@ import SearchBar from "../../Components/SearchBar/SearchBar";
 import { FetchContext, DarkmodeContext, PokeInfoContext } from "../../Context/Context";
 
 import { useContext } from "react";
+
 import "./Pokedex.scss";
 import { Link } from "react-router-dom";
 
@@ -36,6 +37,7 @@ const Pokedex = () => {
             {pokemonInfo.fetchedData?.map((singlePokemonData) => {
               return (
                 <article key={singlePokemonData.id}>
+
                   <div className="pokedex-main__image-container-design">
                     <img
                       src={

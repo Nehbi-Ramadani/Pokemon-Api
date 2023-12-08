@@ -4,8 +4,9 @@
 }
 
 
-
-
+h1{
+    color:white;
+}
 
 
 
@@ -14,27 +15,49 @@
 
 
 .pokemoncard__wrapper{
-    max-width: 100%;
-    border: 0 ;
-    box-shadow: none;
+    padding: 2%;
+    width: 375px;
+    border-radius: 10px;
+    border: 0.5px solid black;
+    box-shadow: 0px 0px 5px black;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #ccdadd;
+    color: white;
+  
+    height: 700px;
+    overflow: scroll;
+    margin-top: 3%;
+}
+
+.sprites{
+border:3px groove #FFCB05;
+border-radius: 20px;
+background-color: #2C72B8;
+background-image: linear-gradient(30deg, #2C72B8, #FFCB05 80%);
+
+
+    
+    img{
+        width: 100%;
+        margin: 0;
+
+    }
 }
 
 
 .pokemoncard-main__wrapper{
     justify-content: center;
     text-align: center;
-    padding: 40px;
-    h1{
-        width: 100%;
-        font:  1.8rem "Roboto-Black";
-        -webkit-text-fill-color: #FFCB05;
-        -webkit-text-stroke: 2px #2C72B8;
-        margin: 10px;
-    }
+
+    color: white;
+    width: 100%;
+    font:  3rem "Roboto-Black";
+    -webkit-text-fill-color: #FFCB05;
+    -webkit-text-stroke: 2px #2C72B8;
     img{
-        border-radius: 10px;
-        padding: 40px 60px;
-        background-image: linear-gradient(30deg, white, #FFCB05 50%);
+        
     }
 }
 
@@ -73,16 +96,28 @@
 
 .movement{
     h3{
-        padding-top: 20px;
-        color: #FFCB05;
-        font-size: 1rem;
+        text-align: center;
+        font: 800 2rem "Roboto-Black";
+        -webkit-text-fill-color: #FFCB05;
+        -webkit-text-stroke: 2px #2C72B8;
     }
 }
 
 
 .moveset{
-    padding: 20px;
-    display: grid;  
+    display: grid;
+    text-align: center;  
     grid-template-columns: repeat(2, 1fr); 
     gap: 5px; 
-}
+    div{
+        border: 2px solid #2C72B8;
+        border-radius: 20px;
+        background-color: rgba(236, 229, 229, 0.719);
+        color: black;
+    }
+    p{
+        font:  20px "Roboto-Black";
+        -webkit-text-fill-color: #FFCB05;
+        -webkit-text-stroke: 1px #2C72B8;
+    }
+    }
