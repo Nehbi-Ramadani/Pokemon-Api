@@ -26,10 +26,10 @@ const typeColors = {
 };
 
 const PokemonCard = () => {
-  const { fetchedData } = useContext(FetchContext);
+  const { pokemonAPPinfo } = useContext(FetchContext);
   const { pokemonId } = useParams();
 
-  const selectedPokemon = fetchedData.find(
+  const selectedPokemon = pokemonAPPinfo.find(
     (pokemon) => pokemon.id === parseInt(pokemonId)
   );
 
