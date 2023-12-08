@@ -13,7 +13,7 @@ function App() {
         <DataFetch />
         <Routes>
           <Route path="/" element={<Pokedex />} />
-          <Route path="/pokemoncard/:id" element={<PokemonCard />} />
+          <Route path="/PokemonCard/:pokemonId" element={<PokemonCard/>} />
         </Routes>
       </FetchContext.Provider>
     </>

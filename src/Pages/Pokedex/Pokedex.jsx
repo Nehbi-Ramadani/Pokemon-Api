@@ -2,6 +2,9 @@ import "./Pokedex.scss";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import { FetchContext } from "../../Context/Context";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
+import PokemonCard from "../PokemonCard/PokemonCard";
+
 const Pokedex = () => {
   const pokemonInfo = useContext(FetchContext);
   console.log(pokemonInfo);
@@ -20,6 +23,7 @@ const Pokedex = () => {
                   <p>
                     {"Base Experience: " + singlePokemonData.base_experience}
                   </p>
+                  <Link to={`/PokemonCard/${singlePokemonData.id}`}>Details</Link>
                   <p>{"Weight: " + singlePokemonData.weight}</p>
                 </article>
               );
